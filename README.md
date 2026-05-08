@@ -1,7 +1,20 @@
 # dev-conventions
 
-Shared development conventions and AI agent rules for the Grails projects in
-this workspace (`biotastic`, `planeout`, ...).
+Shared development conventions and AI agent rules 
+
+## Onboarding (new project or fresh clone)
+
+```bash
+# from the parent workspace dir, with project already cloned:
+./dev-conventions/bootstrap.sh ./my-new-app
+```
+
+The script creates the four symlinks and prints the `.gitignore` lines to
+add. It's idempotent and refuses to clobber existing real
+files/directories — move or remove them first.
+
+
+## Further Info:
 
 ## What's here
 
@@ -38,16 +51,6 @@ The symlinks are `.gitignore`d in each project. Cloning a project alone is
 not enough — you also need to clone `dev-conventions` next to it and run
 `bootstrap.sh`.
 
-## Onboarding (new project or fresh clone)
-
-```bash
-# from the parent workspace dir, with project already cloned:
-./dev-conventions/bootstrap.sh ./my-new-app
-```
-
-The script creates the four symlinks and prints the `.gitignore` lines to
-add. It's idempotent and refuses to clobber existing real
-files/directories — move or remove them first.
 
 ## Updating conventions
 
