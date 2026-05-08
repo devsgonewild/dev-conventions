@@ -11,6 +11,8 @@ this workspace (`biotastic`, `planeout`, ...).
   `.cursor/skills/` directory.
 - **`docs/conventions/`** — long-form prose conventions referenced from rules
   and from in-repo code/docs (e.g. `docs/conventions/testing.md`).
+- **`AGENTS.md`** — generic orientation surfaced to Cursor / Codex / Claude
+  / etc. via a symlink at each project root.
 
 ## How projects use this
 
@@ -27,23 +29,25 @@ GRAILS/
 
 Each project gets the shared content via **relative symlinks** at:
 
+- `<project>/AGENTS.md            -> ../dev-conventions/AGENTS.md`
 - `<project>/.cursor/rules        -> ../../dev-conventions/cursor/rules`
 - `<project>/.cursor/skills       -> ../../dev-conventions/cursor/skills`
 - `<project>/docs/conventions     -> ../../dev-conventions/docs/conventions`
 
-The symlinks are `.gitignore`d in each project. Cloning a project alone is not
-enough — you also need to clone `dev-conventions` next to it and run
+The symlinks are `.gitignore`d in each project. Cloning a project alone is
+not enough — you also need to clone `dev-conventions` next to it and run
 `bootstrap.sh`.
 
-## Onboarding a new project
+## Onboarding (new project or fresh clone)
 
 ```bash
 # from the parent workspace dir, with project already cloned:
 ./dev-conventions/bootstrap.sh ./my-new-app
 ```
 
-The script is idempotent: re-running it is safe and does nothing if the
-symlinks are already in place.
+The script creates the four symlinks and prints the `.gitignore` lines to
+add. It's idempotent and refuses to clobber existing real
+files/directories — move or remove them first.
 
 ## Updating conventions
 
