@@ -1,0 +1,16 @@
+# Task boundaries and handoffs (biotastic)
+
+Use this rule set every time for `docs/tasks` workflow:
+
+1. One task file = one bounded outcome.
+2. If scope expands, create a new task; do not stretch the old one.
+3. After each RED->GREEN slice, append handoff notes to the task handoff file in `docs/tasks/open/*-handoff.md`.
+4. Keep `docs/tasks/CURRENT_HANDOFF.md` pointing at the active task + handoff during work.
+5. When task outcome is complete:
+   - Move task and handoff files to `docs/tasks/done/`
+   - Update `docs/tasks/completed.md`
+   - Repoint or clear `docs/tasks/CURRENT_HANDOFF.md`
+
+Terminology:
+- Iteration/phase are planning containers.
+- Slice is the executable TDD unit (RED->GREEN->review pause).

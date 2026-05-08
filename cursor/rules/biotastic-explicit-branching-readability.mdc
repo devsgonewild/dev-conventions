@@ -1,0 +1,32 @@
+# Explicit branching for readability (biotastic)
+
+When controller/service logic has 3+ decision paths (or one path will soon become 3+), prefer explicit `if / else if / else` branching over nested ternaries or compressed expressions.
+
+## Why
+
+- The control flow is easier to scan.
+- Future branches can be inserted safely (for example, adding `loadMapping` later).
+- The "why this branch runs" remains obvious in code review.
+
+## Guideline
+
+- Use one clearly named variable per user intent (for example `rememberLastMapping`).
+- Branch in business-order, not clever-expression order.
+- Duplicate a short call in two branches if it keeps flow obvious.
+
+## Example
+
+Prefer:
+
+```groovy
+Map model
+if (resetToBaseline) {
+    model = occurrenceImportService.getDefaultMapping(cmd.importToken, user.tenantId, cmd.encoding, cmd.delimiter)
+} else if (rememberLastMapping) {
+    model = occurrenceImportService.getMapping(cmd.importToken, user.tenantId, cmd.encoding, cmd.delimiter, user)
+} else {
+    model = occurrenceImportService.getDefaultMapping(cmd.importToken, user.tenantId, cmd.encoding, cmd.delimiter)
+}
+```
+
+Over nested ternaries for multi-branch flow.

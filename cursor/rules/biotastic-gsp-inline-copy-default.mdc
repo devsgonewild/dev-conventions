@@ -1,0 +1,12 @@
+---
+description: Default GSP/HTML text to inline copy
+alwaysApply: true
+---
+
+# GSP/HTML copy default
+
+For new or edited GSP/HTML templates in this repo:
+
+1. Write UI copy directly in the template by default (plain text, labels, headings, help text, one-off page copy).
+2. Do **not** add i18n keys to `grails-app/i18n/messages.properties` for one-off copy.
+3. Extract text to `messages.properties` only when it is intentionally reusable (for example: shared button labels, repeated field headings, common flash/error text).

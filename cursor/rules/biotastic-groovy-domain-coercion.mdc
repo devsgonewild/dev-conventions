@@ -1,0 +1,8 @@
+---
+description: Prefer Groovy/GORM coercion over per-property parsing switches on domains
+alwaysApply: true
+---
+
+# Grails domain binding & Groovy coercion
+
+When binding into Grails domain instances (including `instance[prop] = value`), normalize input as needed (e.g. trim, treat blank as `null`) and assign in one place. **Do not** add a `switch` / long `if` chain on property names solely to call `Integer.valueOf`, `Double.valueOf`, etc.—rely on Groovy/GORM coercion from `String` (and `Number` where applicable) unless a documented requirement needs different parsing or validation behavior.

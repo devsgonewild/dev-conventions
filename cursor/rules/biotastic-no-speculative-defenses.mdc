@@ -1,0 +1,14 @@
+---
+description: Avoid speculative and app-only hand-edit defenses
+alwaysApply: true
+---
+
+# No speculative defenses
+
+When implementing or reviewing code in this repo:
+
+1. **Do not** add logic, branches, or guards whose main purpose is something that *might* be introduced in the future (unknown schema changes, hypothetical callers, “just in case”). Implement what the current contract and callers require.
+
+2. **Do not** defend against a human hand-editing or corrupting files or payloads that are **written only by this application** in normal use. Assume those artifacts match what the app writes; do not add branches for “if someone edited JSON on disk” or similar.
+
+If a real requirement appears (new format, new writer, or external input), add handling then—grounded in actual requirements or threat model—not preemptive speculation.

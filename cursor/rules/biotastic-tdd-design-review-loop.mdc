@@ -1,0 +1,24 @@
+---
+description: TDD includes design review and refactor after GREEN (biotastic)
+alwaysApply: true
+---
+
+# TDD + design review loop (biotastic)
+
+For every task or slice:
+
+1. **RED**: add failing tests only.
+2. **GREEN**: make tests pass with the smallest reasonable change.
+3. **DESIGN REVIEW** (no code edits): list issues against project patterns and conventions:
+   - misplaced responsibilities (controller/service/domain boundaries)
+   - unnecessary abstractions or over-engineering
+   - deviations from established style/patterns
+   - overly defensive code (for example excessive try/catch)
+4. **REFACTOR**: improve structure without behaviour changes.
+5. **VERIFY**: rerun tests.
+
+Do not mark work complete at GREEN. Completion requires:
+- tests pass
+- design is simple
+- implementation matches existing patterns
+- unnecessary abstractions are removed

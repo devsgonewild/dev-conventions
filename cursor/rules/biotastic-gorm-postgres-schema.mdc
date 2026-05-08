@@ -1,0 +1,9 @@
+---
+description: GORM/Hibernate schema updates on PostgreSQL (NOT NULL, defaults, existing rows)
+globs: grails-app/domain/**/*.groovy
+alwaysApply: false
+---
+
+# GORM domains and PostgreSQL DDL (biotastic)
+
+When **adding a new non-null field**  a defaultValue is needed. If its not obvious, ask what it should be.

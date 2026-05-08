@@ -1,0 +1,8 @@
+---
+description: Tests mirror production state; do not bend app code for tests (biotastic)
+alwaysApply: true
+---
+
+# Tests (biotastic)
+
+When adding or editing tests: **set up entities and the environment** to match the real contract (status, files, tenant, prior steps). **Do not** add production branches or shortcuts so tests can skip establishing that state. See **`docs/conventions/testing.md`**. Pre-release default for backward compatibility: **`docs/conventions/evolution-and-compatibility.md`**.

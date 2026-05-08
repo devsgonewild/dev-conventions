@@ -1,0 +1,24 @@
+---
+description: Service-layer exceptions and null conventions (biotastic)
+alwaysApply: true
+---
+
+# Grails services (biotastic)
+
+When editing **`grails-app/services/`**, follow **`docs/conventions/service-layer.md`**: command methods throw (`IllegalArgumentException`, `IllegalStateException`, `ValidationException`); finders may return `null` for “not found”; **catch only for rollback/cleanup**, then rethrow; otherwise let exceptions propagate; minimal logging; linear happy path.
+
+## Transactions (GORM service methods)
+
+- Prefer **method-level** transactions so scope is explicit.
+- Use `@Transactional(readOnly = true)` for lookup/list/preview methods that only read GORM entities.
+- Use `@Transactional` for methods that create, update, delete, enqueue, or intentionally flush data.
+- Avoid class-level `@Transactional` on services that mix reads, writes, batch work, or external/JDBC processing.
+- Keep transaction scope small and focused around the GORM work.
+
+**Terminal failure / logging:** Prefer a domain failure type for known outcomes; let unexpected `Exception`s bubble to one orchestration `catch`, log there, then fail—avoid inner `try/catch` that only re-wrap unknown errors. See **`docs/conventions/service-layer.md`** (orchestration boundary).
+
+## Error handling (exceptions vs return shapes)
+
+- **Do not** use “result maps” with an `error` field (or similar) from private helpers or focused operations (e.g. CSV read/parsing). On failure, **let exceptions propagate** from that helper.
+- **Orchestration** methods may use a **single** `catch` at the service boundary when there is a **deliberate recovery path** (e.g. occurrence import preview: CSV parse throws → catch → show raw lines and tell the user to fix encoding/delimiter). That catch is the **only** place that turns failure into an alternate success-shaped response for the caller.
+- Inner methods stay **linear**: try-with-resources / happy path return; **no** catch-only-to-return-error-object.

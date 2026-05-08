@@ -1,0 +1,20 @@
+---
+description: HTMX server-driven interaction patterns
+alwaysApply: true
+---
+
+# HTMX patterns (biotastic)
+
+When implementing HTMX flows in this repo, use these defaults:
+
+1. **Server-driven success:** for HTMX success responses, prefer `HX-Trigger` JSON + `render ''` over `HX-Redirect` when a local fragment refresh is sufficient.
+2. **Domain event naming:** use one stable domain event per action (for example `fieldDefinitionSaved`) and reuse it across standalone pages and modal/wizard contexts.
+3. **List refresh pattern:** keep lists/tables in a container that refetches with `hx-get` and `hx-trigger="<event> from:body"`; render an initial partial server-side.
+4. **Validation path:** on invalid HTMX POST, rerender the same form fragment with command errors; do not redirect.
+5. **JSON safety:** build `HX-Trigger` payloads with `JsonOutput.toJson(...)`; never hand-build JSON header strings.
+6. **Toasts and errors:** success toasts come from domain events; `htmx:responseError` should be handled centrally in layout, parsing JSON only when response `Content-Type` is JSON and otherwise falling back to status text.
+
+Rule of thumb:
+- HTMX success: `HX-Trigger` + empty body
+- HTMX validation failure: rerender fragment
+- Non-HTMX success: PRG (`flash` + redirect)

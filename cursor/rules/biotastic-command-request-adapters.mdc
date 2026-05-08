@@ -1,0 +1,13 @@
+---
+description: Grails command objects adapt HTTP params to DTOs before services (biotastic)
+alwaysApply: true
+---
+
+# Command objects & request adapters (biotastic)
+
+- **Bind** what Grails can bind: scalar wizard fields on a **command object** with `constraints`.
+- **Adapt** what it cannot (indexed keys, odd shapes, legacy names): add **helper methods on the same command**, e.g. `List<Foo> foosFromRequest(Map params)` or `SomeDto payloadFromRequest(Map params)`, that return **typed DTOs** (immutable POGOs in `src/main/groovy/...` when shared).
+- **Controllers**: after validation, `cmd.adapterMethod(params)` then pass DTOs into the service—**do not** pass raw `params` to services for command-shaped work.
+- **Services**: take **domain-shaped arguments** (DTOs, `List<YourRow>`), not `GrailsParameterMap` / unconstrained `Map` from the request.
+
+Reference: occurrence import map step — `FileMapCommand#columnMappingsFromRequest`, `ColumnMapping`, `OccurrenceImportService#saveMapping`.
