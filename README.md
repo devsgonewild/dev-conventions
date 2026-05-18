@@ -39,7 +39,7 @@ This repo is **not** a dependency in any build sense. Each app expects to find
 ```
 GRAILS/
   dev-conventions/         <-- this repo
-  biotastic/
+  my-new-app/
   planeout/
   ...
 ```

@@ -1,9 +1,9 @@
 ---
-description: Read task history; optional task-first workflow for biotastic
+description: Read task history; optional task-first workflow
 alwaysApply: true
 ---
 
-# Task docs (biotastic)
+# Task docs
 
 Before **non-trivial** work (new behaviour, multi-file changes, security/data model):
 

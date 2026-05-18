@@ -1,4 +1,4 @@
-# Explicit branching for readability (biotastic)
+# Explicit branching for readability
 
 When controller/service logic has 3+ decision paths (or one path will soon become 3+), prefer explicit `if / else if / else` branching over nested ternaries or compressed expressions.
 

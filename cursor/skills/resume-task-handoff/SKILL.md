@@ -6,7 +6,7 @@ description: >-
   "continue from handoff", "@CURRENT_HANDOFF", or starts work on docs/tasks after a break.
 ---
 
-# Resume task handoff (biotastic)
+# Resume task handoff
 
 ## When to use
 

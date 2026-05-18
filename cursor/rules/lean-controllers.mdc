@@ -1,9 +1,9 @@
 ---
-description: Keep Grails controllers lean and linear (biotastic)
+description: Keep Grails controllers lean and linear
 alwaysApply: true
 ---
 
-# Lean Grails controllers (biotastic)
+# Lean Grails controllers
 
 When editing **`grails-app/controllers/`**:
 

@@ -1,9 +1,9 @@
 ---
-description: TDD includes design review and refactor after GREEN (biotastic)
+description: TDD includes design review and refactor after GREEN
 alwaysApply: true
 ---
 
-# TDD + design review loop (biotastic)
+# TDD + design review loop
 
 For every task or slice:
 

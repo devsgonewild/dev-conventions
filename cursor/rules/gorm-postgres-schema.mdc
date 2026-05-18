@@ -4,6 +4,6 @@ globs: grails-app/domain/**/*.groovy
 alwaysApply: false
 ---
 
-# GORM domains and PostgreSQL DDL (biotastic)
+# GORM domains and PostgreSQL DDL
 
 When **adding a new non-null field**  a defaultValue is needed. If its not obvious, ask what it should be.

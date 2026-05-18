@@ -3,7 +3,7 @@ description: HTMX server-driven interaction patterns
 alwaysApply: true
 ---
 
-# HTMX patterns (biotastic)
+# HTMX patterns
 
 When implementing HTMX flows in this repo, use these defaults:
 

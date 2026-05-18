@@ -1,9 +1,9 @@
 ---
-description: Service-layer exceptions and null conventions (biotastic)
+description: Service-layer exceptions and null conventions
 alwaysApply: true
 ---
 
-# Grails services (biotastic)
+# Grails services
 
 When editing **`grails-app/services/`**, follow **`docs/conventions/service-layer.md`**: command methods throw (`IllegalArgumentException`, `IllegalStateException`, `ValidationException`); finders may return `null` for “not found”; **catch only for rollback/cleanup**, then rethrow; otherwise let exceptions propagate; minimal logging; linear happy path.
 
